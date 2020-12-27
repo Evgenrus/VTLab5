@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <title>Title</title>
+    <title>Add student</title>
 </head>
 <body>
 
@@ -21,12 +21,18 @@
 <div class="container mt-5 mb-5">
     <h1>Добавление записи</h1>
     <form action="/add" method="post">
-        <input type="text" name="name" placeholder="Введите имя студента" class="form-control"><br>
-        <input type="number" name="vtmark" placeholder="Введите оценку" class="form-control"><br>
-        <input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control"><br>
-        <input type="number" name="econmark" placeholder="Введите оценку" class="form-control"><br>
-        <input type="number" name="oopmark" placeholder="Введите оценку" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Добавить запись</button>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th width="60%"><input type="text" name="name" placeholder="Введите имя студента" class="form-control"><br></th>
+                <th><input type="number" name="vtmark" placeholder="Введите оценку" class="form-control"><br></th>
+                <th><input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control"><br></th>
+                <th><input type="number" name="econmark" placeholder="Введите оценку" class="form-control"><br></th>
+                <th><input type="number" name="oopmark" placeholder="Введите оценку" class="form-control"><br></th>
+            </tr>
+            </thead>
+        </table>
+        <button type="submit" class="btn btn-success">Принять изменения</button>
     </form>
 </div>
 

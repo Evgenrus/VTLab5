@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <title>Edit</title>
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <h1>Изменение записи</h1>
+    <form action="/add" method="post">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><input type="text" name="name" placeholder="Введите имя студента" class="form-control"><br></th>
+                    <th><input type="number" name="vtmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="number" name="econmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="number" name="oopmark" placeholder="Введите оценку" class="form-control"><br></th>
+                </tr>
+            </thead>
+        </table>
+        <button type="submit" class="btn btn-success">Принять изменения</button>
+    </form>
+</div>
+
+</body>
+</html>

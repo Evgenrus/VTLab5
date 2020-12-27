@@ -30,12 +30,18 @@ public class WebController {
     }
 
     @PostMapping("/add")
-    public String tableSubmit(@RequestParam String name, @RequestParam int vtmark,
+    public String tableSubmitAdd(@RequestParam String name, @RequestParam int vtmark,
                               @RequestParam int econmark, @RequestParam int tvimsmark,
                               @RequestParam int oopmark, Model model) {
         Table table = new Table(name, vtmark, tvimsmark, econmark, oopmark);
         tableRepository.save(table);
-        return "home";
+        return "redirect:/";
     }
+
+    @GetMapping("/edit")
+    public String tableEdit(Model model) {
+        return "edit";
+    }
+
 
 }
