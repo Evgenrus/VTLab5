@@ -12,28 +12,47 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="https://github.com/Evgenrus/VTLab5">My GitHub</a>
     </nav>
-    <a class="btn btn-outline-primary" href="/add">Add student</a>
+    <a class="btn btn-outline-primary" href="#">Just a button</a>
 </header>
 
 <div class="container mt-5">
     <table class="table table-hover mt-2" border="3px solid black">
         <thead>
         <tr padding="3px">
-            <th width="60%" padding="3px"> <h5 th:text="1"></h5></th>
-            <th padding="3px"><h5 th:text="2"></h5></th>
-            <th padding="3px"><h5 th:text="3"></h5></th>
-            <th padding="3px"><h5 th:text="4"></h5></th>
-            <th padding="3px"><h5 th:text="5"></h5></th>
+            <th width="40%" padding="3px"> <h5 align="center">Имя студента</h5></th>
+            <th padding="3px" width="5%"> <h5 align="center">ВТ</h5></th>
+            <th padding="3px" width="5%"> <h5 align="center">ТВиМС</h5></th>
+            <th padding="3px" width="5%"> <h5 align="center">ЭиФП</h5></th>
+            <th padding="3px" width="5%"> <h5 align="center">ООП</h5></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="el : ${tables}" padding="3px">
-            <th width="60%" padding="3px"> <h5 th:text="${el.studentName}"></h5></th>
-            <th padding="3px"><h5 th:text="${el.vtMark}"></h5></th>
-            <th padding="3px"><h5 th:text="${el.tvimsMark}"></h5></th>
-            <th padding="3px"><h5 th:text="${el.econMark}"></h5></th>
-            <th padding="3px"><h5 th:text="${el.oopMark}"></h5></th>
+            <th width="40%" padding="3px"> <h5 th:text="${el.studentName}"></h5></th>
+            <th padding="3px" width="5%"><h5 align="center" th:text="${el.vtMark}"></h5></th>
+            <th padding="3px" width="5%"><h5 align="center" th:text="${el.tvimsMark}"></h5></th>
+            <th padding="3px" width="5%"><h5 align="center" th:text="${el.econMark}"></h5></th>
+            <th padding="3px" width="5%"><h5 align="center" th:text="${el.oopMark}"></h5></th>
+            <th padding="2px"><a class="btn btn-info" style="display: inline-block;" th:href="${el.id} + '/edit/'" type="submit">Изменить</a>
+                <form style="display: inline-block;" th:action="${el.id} + '/del/'" method="post">
+                <button class="btn btn-danger" type="submit">Удалить</button>
+                </form></th>
         </tr>
         </tbody>
+
+        <form action="/" method="post">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th width="60%"><input type="text" name="name" placeholder="Введите имя студента" class="form-control"><br></th>
+                    <th><input type="number" name="vtmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="number" name="econmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="number" name="oopmark" placeholder="Введите оценку" class="form-control"><br></th>
+                </tr>
+                </thead>
+            </table>
+            <button type="submit" class="btn btn-success">Принять изменения</button>
+        </form>
 </body>
 </html>

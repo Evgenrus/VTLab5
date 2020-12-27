@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 public class WebController {
@@ -24,12 +28,7 @@ public class WebController {
         return "home";
     }
 
-    @GetMapping("/add")
-    public String tableAdd(Model model) {
-        return "add";
-    }
-
-    @PostMapping("/add")
+    @PostMapping("/")
     public String tableSubmitAdd(@RequestParam String name, @RequestParam int vtmark,
                               @RequestParam int econmark, @RequestParam int tvimsmark,
                               @RequestParam int oopmark, Model model) {
@@ -38,10 +37,36 @@ public class WebController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit")
-    public String tableEdit(Model model) {
+    @GetMapping("/{id}/edit")
+    public String studentEdit(@PathVariable(value = "id") Long id, Model model) {
+        if(!tableRepository.existsById(id)) {
+            return "redirect:/";
+        }
+        Optional<Table> table = tableRepository.findById(id);
+        ArrayList<Table> tableArr = new ArrayList<>();
+        table.ifPresent(tableArr::add);
+        model.addAttribute("table", table);
         return "edit";
     }
 
+    @PostMapping("/{id}/edit")
+    public String studentUpdate(@PathVariable(value = "id") Long id, @RequestParam String name, @RequestParam int vtmark,
+                              @RequestParam int econmark, @RequestParam int tvimsmark,
+                              @RequestParam int oopmark, Model model) {
+        Table table = tableRepository.findById(id).orElseThrow();
+        table.setStudentName(name);
+        table.setVtMark(vtmark);
+        table.setTvimsMark(tvimsmark);
+        table.setEconMark(econmark);
+        table.setOopMark(oopmark);
+        tableRepository.save(table);
+        return "redirect:/";
+    }
 
+    @PostMapping("/{id}/del")
+    public String studentUpdate(@PathVariable(value = "id") Long id, Model model) {
+        Table table = tableRepository.findById(id).orElseThrow();
+        tableRepository.delete(table);
+        return "redirect:/";
+    }
 }
