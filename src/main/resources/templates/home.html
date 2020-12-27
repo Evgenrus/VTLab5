@@ -20,7 +20,11 @@
 
 <div class="container mt-5">
     <div th:each="el : ${tables}" class="alert alert-info mt-2">
-        <h3 th:text="${el.name}"></h3>
+        <h3 th:text="${el.studentName}"></h3>
+        <h3 th:text="${el.vtMark}"></h3>
+        <h3 th:text="${el.tvimsMark}"></h3>
+        <h3 th:text="${el.econMark}"></h3>
+        <h3 th:text="${el.oopMark}"></h3>
     </div>
 </body>
 </html>

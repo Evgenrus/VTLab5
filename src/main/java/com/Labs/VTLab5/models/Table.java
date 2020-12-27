@@ -26,9 +26,22 @@ public class Table {
     @Column(name="oopmark")
     private int oopMark;
 
-    /*----------------------------------------------------
-     ---------------getters and setters-------------------
-     -----------------------------------------------------*/
+    /*-------------------constructors-------------------*/
+
+    public Table(String studentName, int vtMark, int tvimsMark, int econMark, int oopMark) {
+        this.studentName = studentName;
+        this.vtMark = vtMark;
+        this.tvimsMark = tvimsMark;
+        this.econMark = econMark;
+        this.oopMark = oopMark;
+    }
+
+    public Table() {
+    }
+
+    /*---------------end-of-constructors------------------*/
+
+    /*---------------getters and setters-------------------*/
     public Long getId() {
         return id;
     }
@@ -76,9 +89,7 @@ public class Table {
     public void setOopMark(int oopMark) {
         this.oopMark = oopMark;
     }
-    /*----------------------------------------------------
-     -------------end of getters and setters--------------
-     -----------------------------------------------------*/
+    /*-------------end of getters and setters--------------*/
 
 
 }

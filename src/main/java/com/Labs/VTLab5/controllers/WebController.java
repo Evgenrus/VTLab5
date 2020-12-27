@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -20,6 +21,20 @@ public class WebController {
         //model.addAttribute("Title", "Лабораторная работа №5");
         Iterable<Table> tables = tableRepository.findAll();
         model.addAttribute("tables", tables);
+        return "home";
+    }
+
+    @GetMapping("/add")
+    public String tableAdd(Model model) {
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String tableSubmit(@RequestParam String name, @RequestParam int vtmark,
+                              @RequestParam int econmark, @RequestParam int tvimsmark,
+                              @RequestParam int oopmark, Model model) {
+        Table table = new Table(name, vtmark, tvimsmark, econmark, oopmark);
+        tableRepository.save(table);
         return "home";
     }
 
