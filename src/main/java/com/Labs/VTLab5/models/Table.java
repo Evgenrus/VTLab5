@@ -1,20 +1,30 @@
 package com.Labs.VTLab5.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@javax.persistence.Table(name="Tables")
 public class Table {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="uid")
     private Long id;
 
+    @Column(name="name")
     private String studentName;
 
-    private int vtMark, tvimsMark, econMark, oopMark;
+    @Column(name="vtmark")
+    private int vtMark;
+
+    @Column(name="tvimsmark")
+    private int tvimsMark;
+
+    @Column(name="ecomark")
+    private int econMark;
+
+    @Column(name="oopmark")
+    private int oopMark;
 
     /*----------------------------------------------------
      ---------------getters and setters-------------------
