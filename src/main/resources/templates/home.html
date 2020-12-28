@@ -44,11 +44,11 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th width="60%"><input type="text" name="name" placeholder="Введите имя студента" class="form-control"><br></th>
-                    <th><input type="number" name="vtmark" placeholder="Введите оценку" class="form-control"><br></th>
-                    <th><input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control"><br></th>
-                    <th><input type="number" name="econmark" placeholder="Введите оценку" class="form-control"><br></th>
-                    <th><input type="number" name="oopmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th width="60%"><input type="text" name="name" placeholder="Введите имя студента" class="form-control" minlength="1" required><br></th>
+                    <th><input type="number" name="vtmark" placeholder="Введите оценку" min="1" max="5" class="form-control" required><br></th>
+                    <th><input type="number" name="tvimsmark" placeholder="Введите оценку" min="1" max="5" class="form-control" required><br></th>
+                    <th><input type="number" name="econmark" placeholder="Введите оценку" min="1" max="5" class="form-control" required><br></th>
+                    <th><input type="number" name="oopmark" placeholder="Введите оценку" min="1" max="5" class="form-control" required><br></th>
                 </tr>
                 </thead>
             </table>

@@ -28,17 +28,34 @@ public class WebController {
         return "home";
     }
 
+    //Обрабатывает форму добавления снизу таблицы в "/"
     @PostMapping("/")
     public String tableSubmitAdd(@RequestParam String name, @RequestParam int vtmark,
                               @RequestParam int econmark, @RequestParam int tvimsmark,
                               @RequestParam int oopmark, Model model) {
+        /*Если студент с заданным именем есть,
+        * будет обновлена запись */
+        Iterable<Table> tables = tableRepository.findAll();
+        for(Table x : tables) {
+            if(name.equals(x.getStudentName())) {
+                Table table = tableRepository.findById(x.getId()).orElseThrow();
+                x.setMarks(vtmark, tvimsmark, econmark, oopmark);
+                tableRepository.save(table);
+                return "redirect:/";
+            }
+        }
+        /*Если студента с заданным именем нет,
+        * создать новую запись*/
         Table table = new Table(name, vtmark, tvimsmark, econmark, oopmark);
         tableRepository.save(table);
         return "redirect:/";
     }
 
+    /*Обрабатывает форму редактирования записи.
+    * id - динамический параметр, передается из "/" */
     @GetMapping("/{id}/edit")
     public String studentEdit(@PathVariable(value = "id") Long id, Model model) {
+        //Если записи с искомым id не существует, возврат на главную страницу
         if(!tableRepository.existsById(id)) {
             return "redirect:/";
         }
@@ -49,20 +66,19 @@ public class WebController {
         return "edit";
     }
 
+    //Обрабатывает форму обновления записи
     @PostMapping("/{id}/edit")
     public String studentUpdate(@PathVariable(value = "id") Long id, @RequestParam String name, @RequestParam int vtmark,
                               @RequestParam int econmark, @RequestParam int tvimsmark,
                               @RequestParam int oopmark, Model model) {
         Table table = tableRepository.findById(id).orElseThrow();
         table.setStudentName(name);
-        table.setVtMark(vtmark);
-        table.setTvimsMark(tvimsmark);
-        table.setEconMark(econmark);
-        table.setOopMark(oopmark);
+        table.setMarks(vtmark, tvimsmark, econmark, oopmark);
         tableRepository.save(table);
         return "redirect:/";
     }
 
+    //Обрабатывает удаление записи
     @PostMapping("/{id}/del")
     public String studentUpdate(@PathVariable(value = "id") Long id, Model model) {
         Table table = tableRepository.findById(id).orElseThrow();

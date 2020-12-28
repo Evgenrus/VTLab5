@@ -13,11 +13,11 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th><input type="text" name="name" placeholder="Введите имя студента" class="form-control"><br></th>
-                    <th><input type="number" name="vtmark" placeholder="Введите оценку" class="form-control"><br></th>
-                    <th><input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control"><br></th>
-                    <th><input type="number" name="econmark" placeholder="Введите оценку" class="form-control"><br></th>
-                    <th><input type="number" name="oopmark" placeholder="Введите оценку" class="form-control"><br></th>
+                    <th><input type="text" name="name" placeholder="Введите имя студента" class="form-control" minlength="1" required><br></th>
+                    <th><input type="number" name="vtmark" placeholder="Введите оценку" class="form-control" min="1" max="5"><br></th>
+                    <th><input type="number" name="tvimsmark" placeholder="Введите оценку" class="form-control" min="1" max="5"><br></th>
+                    <th><input type="number" name="econmark" placeholder="Введите оценку" class="form-control" min="1" max="5"><br></th>
+                    <th><input type="number" name="oopmark" placeholder="Введите оценку" class="form-control" min="1" max="5"><br></th>
                 </tr>
             </thead>
         </table>

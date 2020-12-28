@@ -42,6 +42,13 @@ public class Table {
     /*---------------end-of-constructors------------------*/
 
     /*---------------getters and setters-------------------*/
+    public void setMarks(int vtMark, int tvimsMark, int econMark, int oopMark) {
+        this.vtMark = vtMark;
+        this.tvimsMark = tvimsMark;
+        this.econMark = econMark;
+        this.oopMark = oopMark;
+    }
+
     public Long getId() {
         return id;
     }
@@ -90,6 +97,5 @@ public class Table {
         this.oopMark = oopMark;
     }
     /*-------------end of getters and setters--------------*/
-
 
 }
